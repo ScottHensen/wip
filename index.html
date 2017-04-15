@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WIPninja</title>
+
+	<!-- Styles: Bootstrap 3 -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC|Architects+Daughter|Caveat|Gloria+Hallelujah|Reenie+Beanie|Rock+Salt">
+
+	<!-- Styles: Mine -->
+  <link rel="stylesheet" href="styles/base.css" type="text/css" >
+  <link rel="stylesheet" href="styles/kanban.css" type="text/css" >
+
+  <!-- Javascript: Other -->
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="js/jquery.ui.tough-punch.min.js"></script>
+
+  <!-- Javascript: Mine -->
+  <script src="js/kanban.js"></script>
+</head>
+
+<body>
+  <ul class="list-inline subhdr">
+		<li><h1><!--a href="/" class="homelink"-->WIP.ninja<!--/a--></h1></li>
+		<li><h3 id="boardName" ></h3></li>
+		<li><h4 id="teamName"  ></h3></li>
+		<li><h5 id="personName"></h3></li>
+	</ul>
+
+  <table class="board">
+	  <tr class="boardHdr">
+		  <th class="boxHdr">Backlog</th>
+		  <th class="boxHdr">Waiting</th>
+		  <th class="boxHdr">WIP</th>
+		  <th class="boxHdr">Verification</th>
+		  <th class="boxHdr">Completed</th>
+	  </tr>
+	  <tr id="tasks" class="boxTasks">
+		  <td id="box1" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+		  <td id="box2" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+		  <td id="box3" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+		  <td id="box4" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+		  <td id="box5" class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+	  </tr>
+  </table>
+  <br>
+
+  <div id="kanbanFooter">
+    <div id="workCatMenu" class="work-menu">
+  	  <button id="workCat1" class="workCat work-bus-proj" type="button" onclick="newTask('taskTy-bus')">Bus Proj</button>
+      <button id="workCat2" class="workCat work-is-proj" type="button" onclick="newTask('taskTy-is')">IS Proj</button>
+      <button id="workCat3" class="workCat work-maint" type="button" onclick="newTask('taskTy-maint')">Maintenance</button>
+      <button id="workCat4" class="workCat work-unplanned" type="button" onclick="newTask('taskTy-unplanned')">Unplanned</button>
+    </div>
+
+    <div id="trash" class="trash" ondrop="dropTrash(event)" ondragover="allowDrop(event)">
+	    <i class="material-icons">delete</i>
+    </div>
+  </div>
+
+	<div id="kanbanModal" class="kanbanModal">
+    <div class="modalContent">
+	    <div id="modalTask" class="task postit handwritten" draggable="true" ondragstart="drag(event)">
+		    <textarea id="taskName" class="myTextarea taskName" rows="2" placeholder="Task"></textarea>
+		    <br>
+		    <textarea id="taskDesc" class="myTextarea taskDesc" rows="3" placeholder="Desc"></textarea>
+		    <br>
+		    <button id="setTaskBtn" class="setTaskBtn" type="button" onclick="setModalTask()">O</button>
+		    <button id="canTaskBtn" class="canTaskBtn" type="button" onclick="canModalTask()">X</button>
+      </div>
+    </div>
+  </div>
+
+	<div id="kanbanTaskTemplate" class="kanbanTaskTemplate">
+    <div class="tasktemplateContent">
+	    <div id="taskTemplate" class="task postit handwritten" draggable="true" ondragstart="drag(event)">
+		    <textarea id="taskName" class="myTextarea taskName" rows="2" placeholder="Task"></textarea>
+		    <br>
+		    <textarea id="taskDesc" class="myTextarea taskDesc" rows="3" placeholder="Desc"></textarea>
+		    <br>
+      </div>
+    </div>
+  </div>
+
+</body>
